@@ -1,5 +1,6 @@
 require('dotenv').config()
 
+
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -14,7 +15,8 @@ var sportsRouter=require('./routes/sports');
 var favoriteTeamsRouter=require('./routes/favorite_teams')
 var favoriteAthletesRouter=require('./routes/favorite_athletes')
 var favoriteSportsRouter=require('./routes/favorite_sports')
-var rostersRouter=require('./routes/rosters');
+
+
 
 var app = express();
 app.use(function(req, res, next) {
@@ -28,7 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(passport.initialize());
+
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
@@ -39,5 +41,5 @@ app.use('/sports', sportsRouter)
 app.use('/favorite_teams', favoriteTeamsRouter)
 app.use('/favorite_sports', favoriteSportsRouter)
 app.use('/favorite_athletes', favoriteAthletesRouter)
-app.use('/rosters', rostersRouter)
+
 module.exports = app;
