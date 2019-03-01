@@ -34,7 +34,6 @@ exports.up = function(knex, Promise) {
 
     table.boolean('isAdmin').defaultTo(false)
 
-    table.string('hashedPassword').unique().notNullable().defaultTo('')
 
 
     table.timestamps(true, true)

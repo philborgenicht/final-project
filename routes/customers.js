@@ -23,8 +23,8 @@ router.get('/:id', function(req,res, next) {
 router.post('/', function(req, res, next){
   knex('customers')
     .insert(req.body)
-    .returning(['id', 'firstName', 'lastName', 'email', 'username', 'phone', 'favoritePlayer',
-    'favoritePlayerId', 'favoriteTeam', 'favoriteTeamId', 'favoriteSport', 'favoriteSportId', 'isActive', 'isAdmin', 'hashedPassword'])
+    .returning(['id', 'firstname', 'lastname', 'email', 'username', 'phone', 'favoritePlayer',
+    'favoritePlayerId', 'favoriteTeam', 'favoriteTeamId', 'favoriteSport', 'favoriteSportId', 'isActive', 'isAdmin'])
     .then((data) => {
     res.status(200).json(data[0])
   })
@@ -36,8 +36,8 @@ router.patch('/:id', function(req,res,next){
     knex('customers')
     .where('id', id)
     .update(info)
-    .returning(['id', 'firstName', 'lastName', 'email', 'username', 'phone', 'favoritePlayer',
-    'favoritePlayerId', 'favoriteTeam', 'favoriteTeamId', 'favoriteSport', 'favoriteSportId', 'isActive', 'isAdmin', 'hashedPassword'])
+    .returning(['id', 'firstname', 'lastname', 'email', 'username', 'phone', 'favoritePlayer',
+    'favoritePlayerId', 'favoriteTeam', 'favoriteTeamId', 'favoriteSport', 'favoriteSportId', 'isActive', 'isAdmin'])
     .then(data=>{
       res.status(200).json(data[0])
     })
@@ -48,8 +48,8 @@ router.delete('/:id', function(req, res, next){
     knex('customers')
     .where('id', id)
     .del()
-    .returning(['id', 'firstName', 'lastName', 'email', 'username', 'phone', 'favoritePlayer',
-    'favoritePlayerId', 'favoriteTeam', 'favoriteTeamId', 'favoriteSport', 'favoriteSportId', 'isActive', 'isAdmin', 'hashedPassword'])
+    .returning(['id', 'firstname', 'lastname', 'email', 'username', 'phone', 'favoritePlayer',
+    'favoritePlayerId', 'favoriteTeam', 'favoriteTeamId', 'favoriteSport', 'favoriteSportId', 'isActive', 'isAdmin'])
     .then(data=>{
       res.status(200).json(data[0])
     })
