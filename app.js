@@ -1,5 +1,4 @@
 require('dotenv').config()
-require('./config/passport')
 
 var express = require('express');
 var path = require('path');
@@ -16,7 +15,6 @@ var favoriteTeamsRouter=require('./routes/favorite_teams')
 var favoriteAthletesRouter=require('./routes/favorite_athletes')
 var favoriteSportsRouter=require('./routes/favorite_sports')
 var rostersRouter=require('./routes/rosters');
-var passport = require('passport');
 
 var app = express();
 app.use(function(req, res, next) {
