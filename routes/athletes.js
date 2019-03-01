@@ -23,7 +23,7 @@ router.get('/:id', function(req,res, next) {
 router.post('/', function(req, res, next){
   knex('athletes')
     .insert(req.body)
-    .returning(['id', 'firstName', 'lastName','sport', 'sportId', 'teamName', 'teamId', 'position' ])
+    .returning(['id', 'name','sport', 'sportId', 'teamName', 'teamId', 'onTeam', 'position' ])
     .then((data) => {
     res.status(200).json(data[0])
   })
