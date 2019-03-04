@@ -15,19 +15,19 @@ exports.up = function(knex, Promise) {
     table.string('favoritePlayer')
     table.foreign('favoritePlayer').references('athletes.name').onDelete('CASCADE')
 
-    table.integer('favoritePlayerId')
+    table.integer('favoritePlayerId').notNullable()
     table.foreign('favoritePlayerId').references('athletes.id').onDelete('CASCADE')
 
     table.string('favoriteTeam')
     table.foreign('favoriteTeam').references('teams.name').onDelete('CASCADE')
 
-    table.integer('favoriteTeamId')
+    table.integer('favoriteTeamId').notNullable()
     table.foreign('favoriteTeamId').references('teams.id').onDelete('CASCADE')
 
     table.string('favoriteSport')
     table.foreign('favoriteSport').references('sports.name').onDelete('CASCADE')
 
-    table.integer('favoriteSportId')
+    table.integer('favoriteSportId').notNullable()
     table.foreign('favoriteSportId').references('sports.id').onDelete('CASCADE')
 
     table.boolean('isActive').notNullable().defaultTo(true)
