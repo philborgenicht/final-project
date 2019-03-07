@@ -4,7 +4,7 @@ const knex = require('../knex.js')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  knex('favorite_athletes')
+  knex('customers_athletes')
   .select('*')
   .then(data=>{
     res.status(200).json(data)
@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id', function(req,res, next) {
   let id=req.params.id
-  knex('favorite_athletes')
+  knex('customers_athletes')
   .where('id', id)
   .then(data=>{
     res.status(200).json(data[0])
@@ -21,9 +21,9 @@ router.get('/:id', function(req,res, next) {
 })
 
 router.post('/', function(req, res, next){
-  knex('favorite_athletes')
+  knex('customers_athletes')
     .insert(req.body)
-    .returning(['id', 'customerId', 'athleteId', 'sportId', 'teamId'])
+    .returning(['id', 'customerId', 'athleteId'])
     .then((data) => {
     res.status(200).json(data[0])
   })
@@ -32,10 +32,10 @@ router.post('/', function(req, res, next){
 router.patch('/:id', function(req,res,next){
     let id=req.params.id
     let info=req.body
-    knex('favorite_athletes')
+    knex('customers_athletes')
     .where('id', id)
     .update(info)
-    .returning(['id', 'customerId', 'athleteId', 'sportId', 'teamId'])
+    .returning(['id', 'customerId', 'athleteId'])
     .then(data=>{
       res.status(200).json(data[0])
     })
@@ -43,10 +43,10 @@ router.patch('/:id', function(req,res,next){
 
 router.delete('/:id', function(req, res, next){
     let id=req.params.id
-    knex('favorite_athletes')
+    knex('customers_athletes')
     .where('id', id)
     .del()
-    .returning(['id', 'customerId', 'athleteId', 'sportId', 'teamId'])
+    .returning(['id', 'customerId', 'athleteId'])
     .then(data=>{
       res.status(200).json(data[0])
     })

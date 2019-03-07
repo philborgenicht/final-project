@@ -12,9 +12,9 @@ var athletesRouter= require('./routes/athletes');
 var customersRouter=require('./routes/customers');
 var teamsRouter=require('./routes/teams');
 var sportsRouter=require('./routes/sports');
-var favoriteTeamsRouter=require('./routes/favorite_teams')
-var favoriteAthletesRouter=require('./routes/favorite_athletes')
-var favoriteSportsRouter=require('./routes/favorite_sports')
+var customers_athletes=require('./routes/customers_athletes')
+var customers_sports=require('./routes/customers_sports')
+var customers_teams=require('./routes/customers_teams')
 
 
 
@@ -38,8 +38,8 @@ app.use('/athletes', athletesRouter)
 app.use('/customers', customersRouter)
 app.use('/teams', teamsRouter)
 app.use('/sports', sportsRouter)
-app.use('/favorite_teams', favoriteTeamsRouter)
-app.use('/favorite_sports', favoriteSportsRouter)
-app.use('/favorite_athletes', favoriteAthletesRouter)
+app.use('/customers_teams', customers_teams)
+app.use('/customers_sports', customers_sports)
+app.use('/customers_athletes', customers_athletes)
 
 module.exports = app;
