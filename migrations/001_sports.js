@@ -3,7 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments('id')
 
     table.string('name').unique().notNullable().defaultTo('')
-
+        table.boolean('onList').notNullable().defaultTo(false)
     table.timestamps(true, true)
   })
 }

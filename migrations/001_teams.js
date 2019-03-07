@@ -14,6 +14,8 @@ exports.up = function(knex, Promise) {
     table.integer('sportId')
     table.foreign('sportId').references('sports.id')
 
+        table.boolean('onList').notNullable().defaultTo(false)
+
     table.timestamps(true, true)
   })
 }

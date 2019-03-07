@@ -23,7 +23,7 @@ router.get('/:id', function(req,res, next) {
 router.post('/', function(req, res, next){
   knex('teams')
     .insert(req.body)
-    .returning(['id', 'name', 'city', 'state', 'sportName', 'sportId'])
+    .returning(['id', 'name', 'city', 'state', 'sportName', 'sportId', 'onList'])
     .then((data) => {
     res.status(200).json(data[0])
   })
@@ -35,7 +35,7 @@ router.patch('/:id', function(req,res,next){
     knex('teams')
     .where('id', id)
     .update(info)
-    .returning(['id', 'name', 'city', 'state', 'sportName', 'sportId'])
+    .returning(['id', 'name', 'city', 'state', 'sportName', 'sportId', 'onList'])
     .then(data=>{
       res.status(200).json(data[0])
     })
@@ -46,7 +46,7 @@ router.delete('/:id', function(req, res, next){
     knex('teams')
     .where('id', id)
     .del()
-    .returning(['id', 'name', 'city', 'state', 'sportName', 'sportId'])
+    .returning(['id', 'name', 'city', 'state', 'sportName', 'sportId', 'onList'])
     .then(data=>{
       res.status(200).json(data[0])
     })

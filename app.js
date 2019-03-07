@@ -15,6 +15,7 @@ var sportsRouter=require('./routes/sports');
 var favoriteTeamsRouter=require('./routes/favorite_teams')
 var favoriteAthletesRouter=require('./routes/favorite_athletes')
 var favoriteSportsRouter=require('./routes/favorite_sports')
+var rostersRouter=require('./routes/rosters')
 
 
 
@@ -41,5 +42,6 @@ app.use('/sports', sportsRouter)
 app.use('/favorite_teams', favoriteTeamsRouter)
 app.use('/favorite_sports', favoriteSportsRouter)
 app.use('/favorite_athletes', favoriteAthletesRouter)
+app.use('/rosters', rostersRouter)
 
 module.exports = app;
