@@ -5,7 +5,7 @@ exports.up = function(knex, Promise) {
     table.integer('customerId').notNullable()
     table.foreign('customerId').references('customers.id').onDelete('CASCADE')
 
-    table.integer('athleteId').notNullable()
+    table.integer('athleteId').notNullable().unique()
     table.foreign('athleteId').references('athletes.id').onDelete('CASCADE')
 
 
