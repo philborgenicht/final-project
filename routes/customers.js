@@ -26,11 +26,11 @@ router.post('/', function(req, res, next){
 
 
   knex('customers')
-  .where('email', req.body.email)
+  .where('username', req.body.username)
   .first()
   .then((customer)=>{
     if(customer){
-      res.status(400).json('sorry that email is already taken')
+      return next({ status: 400, message: 'Sorry, that username is taken...' })
     }
     return(req.body)
   })

@@ -27,7 +27,7 @@ router.post('/', function(req, res, next){
   .first()
   .then((entry)=>{
     if(entry){
-      res.status(400).json("he is already on your team, silly!")
+      return next({ status: 400, message: 'He is already on your roster' })
     }
     return(req.body)
   })

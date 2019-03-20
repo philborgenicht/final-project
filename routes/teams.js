@@ -27,7 +27,7 @@ router.post('/', function(req, res, next){
   .first()
   .then((team)=>{
     if(team){
-      res.status(400).json('sorry that team already exists')
+      return next({ status: 400, message: 'That team is already in our database...' })
     }
     return(req.body)
   })

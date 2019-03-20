@@ -28,7 +28,7 @@ router.post('/', function(req, res, next){
   .first()
   .then((entry)=>{
     if(entry){
-      res.status(400).json("you already chose that sport!")
+      return next({ status: 400, message: 'You have already acquired that sport' })
     }
     return(req.body)
   })
