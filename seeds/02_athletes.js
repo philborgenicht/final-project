@@ -56,10 +56,10 @@ exports.seed = function(knex, Promise) {
         {id: 41, name:'Dwyane Wade', sport:'Basketball', sportId:1, teamId:6, teamName:'Miami Heat', position:'Guard', onTeam:false},
         {id: 42, name:'Dion Waiters', sport:'Basketball', sportId:1, teamId:6, teamName:'Miami Heat', position:'Forward', onTeam:false},
 
-        {id: 43, name:'Kevin Love', sport:'Basketball', sportId:1, teamId:22, teamName:'Cleveland Cavaliers', position:'', onTeam:false},
-        {id: 44, name:'J.R. Smith', sport:'Basketball', sportId:1, teamId:22, teamName:'Cleveland Cavaliers', position:'', onTeam:false},
-        {id: 45, name:'Collin Sexton', sport:'Basketball', sportId:1, teamId:22, teamName:'Cleveland Cavaliers', position:'', onTeam:false},
-        {id: 46, name:'Tristan Thompson', sport:'Basketball', sportId:1, teamId:22, teamName:'Cleveland Cavaliers', position:'', onTeam:false},
+        {id: 43, name:'Kevin Love', sport:'Basketball', sportId:1, teamId:22, teamName:'Cleveland Cavaliers', position:'Forward', onTeam:false},
+        {id: 44, name:'J.R. Smith', sport:'Basketball', sportId:1, teamId:22, teamName:'Cleveland Cavaliers', position:'Forward', onTeam:false},
+        {id: 45, name:'Collin Sexton', sport:'Basketball', sportId:1, teamId:22, teamName:'Cleveland Cavaliers', position:'Guard', onTeam:false},
+        {id: 46, name:'Tristan Thompson', sport:'Basketball', sportId:1, teamId:22, teamName:'Cleveland Cavaliers', position:'Forward', onTeam:false},
 
         {id: 47, name:'Blake Griffin', sport:'Basketball', sportId:1, teamId:24, teamName:'Detroit Pistons', position:'Forward', onTeam:false},
         {id: 48, name:'Reggie Jackson', sport:'Basketball', sportId:1, teamId:24, teamName:'Detroit Pistons', position:'Guard', onTeam:false},
