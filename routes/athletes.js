@@ -21,13 +21,42 @@ router.get('/:id', function(req,res, next) {
 })
 
 router.post('/', function(req, res, next){
+
+
   knex('athletes')
-    .insert(req.body)
-    .returning(['id', 'name','sport', 'sportId', 'teamName', 'teamId', 'onTeam', 'position' ])
-    .then((data) => {
-    res.status(200).json(data[0])
+  .where('name', req.body.name)
+  .first()
+  .then((athlete)=>{
+    if(athlete){
+      res.status(400).json('sorry that athlete already exists')
+    }
+    return(req.body)
+  })
+    .then((newAthlete)=>{
+      return knex('athletes')
+      .insert(newAthlete)
+      .returning(['id', 'name','sport', 'sportId', 'teamName', 'teamId', 'onTeam', 'position' ])
+          .then((data) => {
+          res.status(200).json(data[0])
+    })
   })
 })
+//
+// router.post('/', function(req, res, next){
+//   knex('athletes')
+//   // .where('name', req.body.name)
+//   // .first()
+//   // .then((athlete))=>{
+//   //   if(athlete){
+//   //     return next({status:400, message: 'Sorry, that athlete is already in the database'})
+//   //   }
+//   // }
+//     .insert(req.body)
+//     .returning(['id', 'name','sport', 'sportId', 'teamName', 'teamId', 'onTeam', 'position' ])
+//     .then((data) => {
+//     res.status(200).json(data[0])
+//   })
+// })
 
 router.patch('/:id', function(req,res,next){
     let id=req.params.id

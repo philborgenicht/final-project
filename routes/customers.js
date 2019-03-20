@@ -20,15 +20,33 @@ router.get('/:id', function(req,res, next) {
   })
 })
 
+
+
 router.post('/', function(req, res, next){
+
+
   knex('customers')
-    .insert(req.body)
-    .returning(['id', 'firstname', 'lastname', 'email', 'username', 'phone', 'favoritePlayer',
-    'favoritePlayerId', 'favoriteTeam', 'favoriteTeamId', 'favoriteSport', 'favoriteSportId', 'isActive', 'isAdmin'])
-    .then((data) => {
-    res.status(200).json(data[0])
+  .where('email', req.body.email)
+  .first()
+  .then((customer)=>{
+    if(customer){
+      res.status(400).json('sorry that email is already taken')
+    }
+    return(req.body)
+  })
+    .then((newCustomer)=>{
+      return knex('customers')
+      .insert(newCustomer)
+      .returning(['id', 'firstname', 'lastname', 'email', 'username', 'phone', 'favoritePlayer','favoritePlayerId', 'favoriteTeam', 'favoriteTeamId', 'favoriteSport', 'favoriteSportId', 'isActive', 'isAdmin'])
+          .then((data) => {
+          res.status(200).json(data[0])
+    })
   })
 })
+
+
+
+
 
 router.patch('/:id', function(req,res,next){
     let id=req.params.id

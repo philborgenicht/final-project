@@ -21,11 +21,24 @@ router.get('/:id', function(req,res, next) {
 })
 
 router.post('/', function(req, res, next){
+
+
   knex('customers_teams')
-    .insert(req.body)
-    .returning(['id', 'customerId', 'teamId'])
-    .then((data) => {
-    res.status(200).json(data[0])
+  .where({'customerId':req.body.customerId, 'teamId':req.body.teamId })
+  .first()
+  .then((entry)=>{
+    if(entry){
+      res.status(400).json("you already own that team, silly!")
+    }
+    return(req.body)
+  })
+    .then((newEntry)=>{
+      return knex('customers_teams')
+      .insert(newEntry)
+      .returning(['id', 'customerId', 'teamId'])
+          .then((data) => {
+          res.status(200).json(data[0])
+    })
   })
 })
 
